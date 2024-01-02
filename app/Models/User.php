@@ -17,10 +17,36 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
     protected $fillable = [
         'name',
         'email',
         'password',
+        'skill',
+        'country',
+        'district',
+        'number',
+        'interested_in',
+        'startup_state',
+        'successful_startups',
+        'startup_names',
+        'startup_funded',
+        'mostly_interected_with',
+        'intereted_with',
+        'type_of_people_interected_with',
+        'others',
+        'package'
+    ];
+    protected $casts = [
+        'interested_in' => 'json',
+        'startup_state' => 'json',
+        'successful_startups' => 'json',
+        'startup_names' => 'json',
+        'startup_funded' => 'json',
+        'mostly_interected_with' => 'json',
+        'type_of_people_interected_with' => 'json',
+        'others' => 'json',
+        'email_verified_at' => 'datetime',
     ];
 
     /**
@@ -32,13 +58,17 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    public function interestedWith()
+    {
+        return $this->belongsTo(User::class, 'intereted_with');
+    }
+    public function transactions()
+    {
+        return $this->hasMany(UserTransaction::class, 'user_id');
+    }
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
+    }
 }
