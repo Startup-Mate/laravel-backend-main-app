@@ -35,7 +35,8 @@ class User extends Authenticatable
         'intereted_with',
         'type_of_people_interected_with',
         'others',
-        'package'
+        'package',
+        'type'
     ];
     protected $casts = [
         'interested_in' => 'json',
@@ -70,5 +71,9 @@ class User extends Authenticatable
     public function package()
     {
         return $this->belongsTo(Package::class);
+    }
+    public function matches()
+    {
+        return $this->hasMany(Match::class, 'user_id');
     }
 }

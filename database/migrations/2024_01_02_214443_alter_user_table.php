@@ -14,11 +14,11 @@ class AlterUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('skill')->nullable();
+            $table->json('skill')->nullable();
             $table->string('country')->nullable();
             $table->string('district')->nullable();
-            $table->string('number')->nullable();
             $table->json('interested_in')->nullable();
+            $table->string('number')->nullable();
             $table->json('startup_state')->nullable();
             $table->json('successful_startups')->nullable();
             $table->json('startup_names')->nullable();
