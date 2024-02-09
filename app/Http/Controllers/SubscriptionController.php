@@ -14,9 +14,10 @@ class SubscriptionController extends Controller
             //if user send info....
             $data = $request->all();
 
-            $subscription = Subscription::all();
+            //save info subscription
+            
             return response()->json([
-                'subscription' => $subscription
+                'success' => true
             ]);
 
         } catch(Exception $ex) {
