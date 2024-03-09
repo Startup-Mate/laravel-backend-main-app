@@ -19,7 +19,7 @@ class MatchmakingController extends Controller
                 ->inRandomOrder()
                 ->first();
             unset($randomMatch->email, $randomMatch->password);
-            dump(json_encode($randomMatch));
+
             return response()->json(['match' => $randomMatch]);
         }
 
