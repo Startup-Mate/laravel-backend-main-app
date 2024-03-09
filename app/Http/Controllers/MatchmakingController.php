@@ -83,6 +83,10 @@ class MatchmakingController extends Controller
             'matched_user_id' => $match->id,
         ]);
 
+        if ($match) {
+            unset($match->email, $match->password);
+        }
+
         return response()->json(['match' => $match]);
     }
 }
