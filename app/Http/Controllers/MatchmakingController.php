@@ -18,7 +18,7 @@ class MatchmakingController extends Controller
                 ->where('id', '!=', $user->id)
                 ->inRandomOrder()
                 ->first();
-
+            unset($randomMatch->email, $randomMatch->password);
             return response()->json(['match' => $randomMatch]);
         }
 
@@ -74,7 +74,7 @@ class MatchmakingController extends Controller
                 ->where('id', '!=', $user->id)
                 ->inRandomOrder()
                 ->first();
-
+            unset($randomMatch->email, $randomMatch->password);
             return response()->json(['match' => $randomMatch]);
         }
 
